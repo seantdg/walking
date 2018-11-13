@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<p>We are now going to connect your account to Strava. We will view the activity that you have shared to your followers or the public and collect the distance for any activites after <%= startDate %></p>
+
+<a href="https://www.strava.com/oauth/authorize?client_id=<%= clientId %>&response_type=code&redirect_uri=<%= redirectUri %>/callback&approval_prompt=force&scope=activity:read">Connect to Strava</a>
+
+<% include ../partials/footer %>
+
+</html>

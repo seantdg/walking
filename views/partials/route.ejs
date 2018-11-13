@@ -1,0 +1,21 @@
+<table>
+
+<!-- list all Journeys -->
+
+<!-- 	Location 	Distance 	Status
+		London 		529km		started -->
+<tr>
+	<td><strong>Location</strong></td>
+	<td><strong>Distance (km)</strong></td>
+	<td><strong>Status</strong></td>
+</tr>
+  <% points.forEach(function(point){ %>
+  <tr>
+		<td><%- point.place %></td>
+		<td><%- point.estimate %></td>
+		<td><%- point.status %></td>
+
+  </tr>
+  <% }); %>
+
+</table>

@@ -1,0 +1,19 @@
+{
+  "name": "charity-walk-mapper",
+  "version": "1.0.0",
+  "description": "Charity Walk Mapper",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "LaughingBiscuit",
+  "license": "None",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.12",
+    "request": "^2.88.0",
+    "sync-request": "^6.0.0"
+  }
+}

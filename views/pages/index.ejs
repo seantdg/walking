@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+
+<% include ../partials/route%>
+<br/>
+
+<% if(end) { %>
+	<% include ../partials/map%>
+<% } else { %>
+	<h1>We did it!</h1>
+<% } %>
+
+<hr/>
+<% include ../partials/table %>
+<br/>
+
+<a href="/connect">Join In!</a>
+
+
+
+<% include ../partials/footer %>
+
+</html>
