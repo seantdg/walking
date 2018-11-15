@@ -21,37 +21,41 @@ if (config.points.length >= 10) {
 // index page 
 app.get('/', function(req, res) {
 
-	var activities = dbUtils.getActivities();
-	var distanceSoFar = activities.reduce((total, cur) => total + cur.distance);
-
-
-	// overwrite for testing below
-	//var distanceSoFar = 1600;
-	config.points.forEach((point) => {
-		point.status = (distanceSoFar > point.estimate ? 'Complete' : point.estimate - distanceSoFar + 'km to go');
-	});
-
-	var currentStart = "";
-	var currentEnd = "";
-	var currentDistance = 0;
-	//work out which is the current journey
-	for (var i = 0; i < config.points.length; i++) {
-		if(config.points[i].status !== 'Complete') {
-			currentStart = config.points[i-1].place;
-			currentEnd = config.points[i].place;
-			currentDistance = config.points[i].estimate - distanceSoFar;
-			break;
+	var activities = dbUtils.getActivities(function(activities){
+		var distanceSoFar = 0;
+		if(activities) {
+			activities.forEach((activity) => distanceSoFar += (activity.distance/1000));
 		}
-	}
 
-    res.render('pages/index', {
-        apikey: config.googleAPIKey,
-        points: config.points,
-		start: currentStart,
-		end: currentEnd,
-		distance: currentDistance,
-		activities: activities
-    });
+		// overwrite for testing below
+		//var distanceSoFar = 2000000;
+		config.points.forEach((point) => {
+			point.status = (distanceSoFar >= point.estimate ? 'Complete' : point.estimate - distanceSoFar + 'km to go');
+		});
+
+		var currentStart = "";
+		var currentEnd = "";
+		var currentDistance = 0;
+		//work out which is the current journey
+		for (var i = 0; i < config.points.length; i++) {
+			if(config.points[i].status !== 'Complete') {
+				currentStart = config.points[i-1].place;
+				currentEnd = config.points[i].place;
+				currentDistance = Math.abs(distanceSoFar - config.points[i-1].estimate);
+				break;
+			}
+		}
+
+	    res.render('pages/index', {
+		apikey: config.googleAPIKey,
+		points: config.points,
+			start: currentStart,
+			end: currentEnd,
+			distance: currentDistance,
+			activities: activities
+	    });
+	
+	});
 });
 
 // connect - require basic auth

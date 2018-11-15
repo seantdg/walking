@@ -31,11 +31,9 @@
                 directionsDisplay = new google.maps.DirectionsRenderer({
                     suppressMarkers: true
                 });
-                var chicago = new google.maps.LatLng(41.850033, -87.6500523);
                 var myOptions = {
                     zoom: 6,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    center: chicago
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
                 map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
                 polyline = new google.maps.Polyline({
@@ -104,4 +102,4 @@
 
         <body onload="initialize()">
 
-            <div id="map_canvas" style="float:left;width:70%;height:50%;"></div>
+            <div id="map_canvas" style="float:left;width:100%;height:50%;"></div>

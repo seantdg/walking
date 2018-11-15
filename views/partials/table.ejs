@@ -1,1 +1,19 @@
-<%- JSON.stringify(activities) %>
+
+<table>
+
+	<tr>
+		<td><strong>Date</strong></td>
+		<td><strong>Name</strong></td>
+		<td><strong>Distance (km)</strong></td>
+	</tr>
+<% for (var i = 0; i < activities.length; i++) { %>
+	<tr>
+		<td><%= activities[i].startDate %></td>
+		<td><%= activities[i].username %></td>
+		<td><%= activities[i].distance / 1000 %></td>
+	</tr>
+	
+
+<% } %>
+
+</table>
