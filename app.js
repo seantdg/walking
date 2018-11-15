@@ -7,7 +7,7 @@ var stravaUtils = require('./utils/strava-auth')
 var dbUtils = require('./utils/db')
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://some-mongo/test');
 
 
 // set the view engine to ejs
