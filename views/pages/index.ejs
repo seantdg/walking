@@ -8,28 +8,23 @@
 <header>
     <% include ../partials/header %>
 </header>
-
-<h2>Route</h2>
-
-<% include ../partials/route%>
-<br/>
-
 <% if(end) { %>
-<h2>Map</h2>
 	<% include ../partials/map%>
 <% } else { %>
 	<h1>We did it!</h1>
 <% } %>
 
 <hr/>
-<h2>Activities</h2>
+<main role="main" class="container">
+
+<% include ../partials/route%>
+<br/>
+
+
+<h2 class="padding-top: 25%">Activities</h2>
 <% include ../partials/table %>
 <br/>
 
-<h1><a href="/connect">Join In!</a></h1>
-
-
-
+</main>
 <% include ../partials/footer %>
-
 </html>

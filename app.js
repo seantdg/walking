@@ -30,7 +30,7 @@ app.get('/', function(req, res) {
 		// overwrite for testing below
 		//var distanceSoFar = 2000000;
 		config.points.forEach((point) => {
-			point.status = (distanceSoFar >= point.estimate ? 'Complete' : point.estimate - distanceSoFar + 'km to go');
+			point.status = (distanceSoFar >= point.estimate ? 'Complete' : Math.round((point.estimate - distanceSoFar) * 100)/100 + 'km to go');
 		});
 
 		var currentStart = "";
@@ -89,9 +89,7 @@ app.get('/callback', function(req, res) {
         } else {
             var activitiesAdded = stravaUtils.scrapeActivities(config, code);
 			dbUtils.addActivities(activitiesAdded);
-            res.render('pages/confirm', {
-                total: activitiesAdded.length
-            });
+            res.status('302').set({Location:'/'}).json({});
         }
     }
 });

@@ -1,16 +1,15 @@
-
-<table>
+<table class="table">
 
 	<tr>
 		<td><strong>Date</strong></td>
 		<td><strong>Name</strong></td>
-		<td><strong>Distance (km)</strong></td>
+		<td><strong>Distance</strong></td>
 	</tr>
 <% for (var i = 0; i < activities.length; i++) { %>
 	<tr>
-		<td><%= activities[i].startDate %></td>
+		<td><%= new Date(activities[i].startDate).toUTCString() %></td>
 		<td><%= activities[i].username %></td>
-		<td><%= activities[i].distance / 1000 %></td>
+		<td><%= Math.round(activities[i].distance / 10)/100 %>km</td>
 	</tr>
 	
 

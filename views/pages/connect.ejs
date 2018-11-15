@@ -5,14 +5,13 @@
     <% include ../partials/head %>
 </head>
 
-<header>
-    <% include ../partials/header %>
-</header>
-
-<p>We are now going to connect your account to Strava. We will view the activity that you have shared to your followers or the public and collect the distance for any activites after <%= startDate %></p>
-
-<a href="https://www.strava.com/oauth/authorize?client_id=<%= clientId %>&response_type=code&redirect_uri=<%= redirectUri %>/callback&approval_prompt=force&scope=activity:read">Connect to Strava</a>
-
-<% include ../partials/footer %>
+<main role="main" class="container">
+    <h1 class="mt-5">Strava Consent</h1>
+	
+    <p class="lead">We are now going to connect your account to Strava. We will view the activity that you have shared to your followers or the public and collect the distance for any activites after
+        <%= new Date(Number(startDate * 1000)).toDateString() %>. We store your Full Name, Start Date and Distance. 
+    </p>
+    <a class="btn btn-primary my-2" href="https://www.strava.com/oauth/authorize?client_id=<%= clientId %>&response_type=code&redirect_uri=<%= redirectUri %>/callback&approval_prompt=force&scope=activity:read">Connect to Strava</a>
+</main>
 
 </html>
